@@ -9,8 +9,9 @@
     "tsBuildInfoFile": "node_modules/.cache/typescript/.tsbuildinfo",
 
     // Modules
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "lib": ["es2024"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./src",

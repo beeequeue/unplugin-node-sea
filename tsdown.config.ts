@@ -3,7 +3,7 @@ import process from "node:process"
 import { defineConfig } from "tsdown"
 
 export default defineConfig({
-  entry: ["src/index.ts"],
+  entry: ["src/plugin.ts"],
   outDir: "dist",
 
   env: {
@@ -18,6 +18,5 @@ export default defineConfig({
   dts: true,
   fixedExtension: true,
 
-  minify: true,
   sourcemap: true,
 })

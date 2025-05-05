@@ -6,7 +6,6 @@ overrides:
   "@stylistic/eslint-plugin": "-"
   eslint-plugin-jsonc: "-"
   eslint-plugin-toml: "-"
-  eslint-plugin-unicorn: 59.0.0
   eslint-plugin-vue: "-"
   eslint-processor-vue-blocks: "-"
   eslint>zod: "-"
@@ -17,5 +16,4 @@ overrides:
   side-channel: npm:@nolyfill/side-channel@^1
   toml-eslint-parser: "-"
 
-savePrefix: ""
 shellEmulator: true
