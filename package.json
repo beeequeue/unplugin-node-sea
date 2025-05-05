@@ -1,0 +1,48 @@
+{
+  "name": "unplugin-node-sea",
+  "type": "module",
+  "version": "0.0.0",
+  "author": "BeeeQueue <adam@haglund.dev>",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": "^22"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./node_modules/.bin/nano-staged"
+  },
+  "nano-staged": {
+    "*.{js,jsx,ts,tsx,json,json5,yaml,yml,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "lint": "eslint",
+    "test": "node --test",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "4.12.0",
+    "@tsconfig/node22": "22.0.1",
+    "@tsconfig/strictest": "2.0.5",
+    "@types/node": "22.15.3",
+    "eslint": "9.26.0",
+    "nano-staged": "0.8.0",
+    "prettier": "3.5.3",
+    "simple-git-hooks": "2.13.0",
+    "tsdown": "0.11.0-beta.5",
+    "typescript": "5.8.3"
+  }
+}

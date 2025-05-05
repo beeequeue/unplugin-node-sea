@@ -1,0 +1,21 @@
+packages: []
+
+overrides:
+  "@eslint/markdown": "-"
+  "@modelcontextprotocol/sdk": "-"
+  "@stylistic/eslint-plugin": "-"
+  eslint-plugin-jsonc: "-"
+  eslint-plugin-toml: "-"
+  eslint-plugin-unicorn: 59.0.0
+  eslint-plugin-vue: "-"
+  eslint-processor-vue-blocks: "-"
+  eslint>zod: "-"
+  is-core-module: npm:@nolyfill/is-core-module@^1
+  jsonc-eslint-parser: "-"
+  safe-buffer: npm:@nolyfill/safe-buffer@^1
+  safer-buffer: npm:@nolyfill/safer-buffer@^1
+  side-channel: npm:@nolyfill/side-channel@^1
+  toml-eslint-parser: "-"
+
+savePrefix: ""
+shellEmulator: true
