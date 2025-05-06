@@ -25,7 +25,7 @@ importers:
   .:
     dependencies:
       empathic:
-        specifier: 1.1.0
+        specifier: ^1.1.0
         version: 1.1.0
       postject:
         specifier: 1.0.0-alpha.6
@@ -64,12 +64,15 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      publint:
+        specifier: 0.3.12
+        version: 0.3.12
       simple-git-hooks:
         specifier: 2.13.0
         version: 2.13.0
       tsdown:
         specifier: 0.11.0
-        version: 0.11.0(typescript@5.8.3)
+        version: 0.11.0(publint@0.3.12)(typescript@5.8.3)
       typescript:
         specifier: 5.8.3
         version: 5.8.3
@@ -443,6 +446,10 @@ packages:
     resolution: {integrity: sha512-CTfcJ9Rp3Lb6YU0smoSEdChHtSY/LriZkuikwHTDVkfl1rtUXhZMt3SwHQq37Mgf/BezUZJh7cSgy5rgM0ARLw==}
     cpu: [x64]
     os: [win32]
+
+  '@publint/pack@0.1.2':
+    resolution: {integrity: sha512-S+9ANAvUmjutrshV4jZjaiG8XQyuJIZ8a4utWmN/vW1sgQ9IfBnPndwkmQYw53QmouOIytT874u65HEmu6H5jw==}
+    engines: {node: '>=18'}
 
   '@quansync/fs@0.1.2':
     resolution: {integrity: sha512-ezIadUb1aFhwJLd++WVqVpi9rnlX8vnd4ju7saPhwLHJN1mJgOv0puePTGV+FbtSnWtwoHDT8lAm4kagDZmpCg==}
@@ -1416,6 +1423,11 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
+  publint@0.3.12:
+    resolution: {integrity: sha512-1w3MMtL9iotBjm1mmXtG3Nk06wnq9UhGNRpQ2j6n1Zq7YAD6gnxMMZMIxlRPAydVjVbjSm+n0lhwqsD1m4LD5w==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
@@ -1487,6 +1499,10 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  sade@1.8.1:
+    resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
+    engines: {node: '>=6'}
 
   scslre@0.3.0:
     resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
@@ -2091,6 +2107,8 @@ snapshots:
 
   '@oxc-resolver/binding-win32-x64-msvc@7.0.1':
     optional: true
+
+  '@publint/pack@0.1.2': {}
 
   '@quansync/fs@0.1.2':
     dependencies:
@@ -3029,6 +3047,13 @@ snapshots:
 
   prettier@3.5.3: {}
 
+  publint@0.3.12:
+    dependencies:
+      '@publint/pack': 0.1.2
+      package-manager-detector: 1.3.0
+      picocolors: 1.1.1
+      sade: 1.8.1
+
   punycode@2.3.1: {}
 
   quansync@0.2.10: {}
@@ -3107,6 +3132,10 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  sade@1.8.1:
+    dependencies:
+      mri: 1.2.0
 
   scslre@0.3.0:
     dependencies:
@@ -3187,7 +3216,7 @@ snapshots:
     dependencies:
       typescript: 5.8.3
 
-  tsdown@0.11.0(typescript@5.8.3):
+  tsdown@0.11.0(publint@0.3.12)(typescript@5.8.3):
     dependencies:
       ansis: 3.17.0
       cac: 6.7.14
@@ -3202,6 +3231,8 @@ snapshots:
       tinyexec: 1.0.1
       tinyglobby: 0.2.13
       unconfig: 7.3.2
+    optionalDependencies:
+      publint: 0.3.12
     transitivePeerDependencies:
       - '@oxc-project/runtime'
       - supports-color
