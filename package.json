@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "author": "BeeeQueue <adam@haglund.dev>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beeequeue/unplugin-node-sea.git"
+  },
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=20.19"
