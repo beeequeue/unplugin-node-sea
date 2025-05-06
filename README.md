@@ -15,7 +15,7 @@ _Currently only supports Rolldown since the information needed are only supplied
 
 ---
 
-This ia a bundler plugin that automatically creates an executable file from a JS file using [Node Single Executable Applications (SEA)](https://nodejs.org/api/single-executable-applications.html).
+A bundler plugin that automatically creates an executable file from a JS file using [Node Single Executable Applications (SEA)](https://nodejs.org/api/single-executable-applications.html).
 
 It finds the entrypoint from the bundler output and embeds it into a Node executable for the building platform.
 
