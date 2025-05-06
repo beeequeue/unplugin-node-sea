@@ -68,6 +68,7 @@ export default defineConfig({
 
 ## To-do (updated 2025-05-06)
 
+- [ ] Add tests.
 - [ ] Add support for more bundlers.
   - Split build logic from the bundler specific config and output handlers
 - [ ] Add error for enabling `v8Snapshot` without `v8.startupSnapshot.setDeserializeMainFunction()` being found in the output file.
