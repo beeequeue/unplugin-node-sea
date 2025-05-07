@@ -6,6 +6,7 @@ export default defineConfig({
 
   platform: "node",
   format: "esm",
+  hash: false,
   dts: true,
   fixedExtension: true,
 
