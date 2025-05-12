@@ -4,11 +4,12 @@ import path from "node:path"
 
 import { inject } from "postject"
 import { x } from "tinyexec"
+import { which } from "tinywhich"
 import { createUnplugin, type UnpluginInstance } from "unplugin"
 
 import { BLOB_PATH, SEA_CONFIG_PATH, WORK_DIR } from "./constants.js"
 import type { NodeSeaPluginOptions, SeaConfig } from "./types.js"
-import { cleanCacheDir, findInPath, loadPkgJson } from "./utils.js"
+import { cleanCacheDir, loadPkgJson } from "./utils.js"
 
 export const nodeSeaUnplugin: UnpluginInstance<NodeSeaPluginOptions | undefined, false> =
   createUnplugin((rawOptions = {}) => {
@@ -48,14 +49,14 @@ export const nodeSeaUnplugin: UnpluginInstance<NodeSeaPluginOptions | undefined,
 
         void fsp.copyFile(process.execPath, execPath).then(() => {
           // Remove exec signing
-          if (process.platform === "win32" && findInPath("signtool") != null) {
+          if (process.platform === "win32" && which("signtool") != null) {
             // prettier-ignore
             void x(
               "signtool",
               ["remove", "/s", execPath],
             )
               .then(() => resolve())
-          } else if (process.platform === "darwin" && findInPath("codesign") != null) {
+          } else if (process.platform === "darwin" && which("codesign") != null) {
             // prettier-ignore
             void x("codesign", ["--sign", "-", execPath])
               .then(() => resolve())

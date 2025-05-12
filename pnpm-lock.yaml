@@ -33,6 +33,9 @@ importers:
       tinyexec:
         specifier: ^1.0.1
         version: 1.0.1
+      tinywhich:
+        specifier: ^0.1.2
+        version: 0.1.2
       unplugin:
         specifier: ^2.3.2
         version: 2.3.2
@@ -1588,6 +1591,10 @@ packages:
   tinyglobby@0.2.13:
     resolution: {integrity: sha512-mEwzpUgrLySlveBwEVDMKk5B57bhLPYovRfPAXD5gA/98Opn0rCDj3GtLwFvCvH5RK9uPCExUROW5NjDwvqkxw==}
     engines: {node: '>=12.0.0'}
+
+  tinywhich@0.1.2:
+    resolution: {integrity: sha512-m5wdHIcdaJ7SSHHSfrJBRNocywKI9QgBK/0+ReLjGdf7+YuKqlf0lNEizchjhoi75wToR13mi49Pt9sfaOv7Ew==}
+    engines: {node: '>=16'}
 
   tmp@0.0.33:
     resolution: {integrity: sha512-jRCJlojKnZ3addtTOjdIqoRuPEKBvNXcGYqzO6zWZX8KfKEpnGY5jfggJQ3EjKuu8D4bJRr0y+cYJFmYbImXGw==}
@@ -3203,6 +3210,8 @@ snapshots:
     dependencies:
       fdir: 6.4.4(picomatch@4.0.2)
       picomatch: 4.0.2
+
+  tinywhich@0.1.2: {}
 
   tmp@0.0.33:
     dependencies:

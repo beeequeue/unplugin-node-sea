@@ -53,8 +53,8 @@ export default defineConfig({
   minify: false,
   fixedExtension: true,
 
-  // All options are optional
   plugins: [
+    // All options are optional
     nodeSeaUnplugin.rolldown({
       name: "foo", // name of executable (without .exe). Defaults to name in package.json
       codeCache: true, // Enable v8 compile cache. Default to `true`
