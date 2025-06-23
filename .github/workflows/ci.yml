@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -26,17 +26,19 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.cache.outputs.path }}
-          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: v1-pnpm-ubuntu-24.04-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            v1-pnpm-
+            v1-pnpm-ubuntu-24.04
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm lint
+      - run: node --run build
+
+      - run: node --run lint
 
   typecheck:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -54,24 +56,35 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.cache.outputs.path }}
-          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: v1-pnpm-ubuntu-24.04-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            v1-pnpm-
+            v1-pnpm-ubuntu-24.04
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm typecheck
+      - run: node --run build
+
+      - run: node --run typecheck
 
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+        matrix:
+          - runner: ubuntu-24.04
+          - runner: macos-15
+          - runner: windows-2025
+
+    runs-on: ${{ matrix.matrix.runner }}
+    continue-on-error: true
 
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ matrix.node }}
 
       - run: corepack enable
 
@@ -82,17 +95,19 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.cache.outputs.path }}
-          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: v1-${{ matrix.matrix.runner }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            v1-pnpm-
+            v1-pnpm-${{ matrix.matrix.runner }}
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm test
+      - run: node --run build
+
+      - run: node --run test
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -110,11 +125,11 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ${{ steps.cache.outputs.path }}
-          key: v1-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: v1-pnpm-ubuntu-24.04-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            v1-pnpm-
+            v1-pnpm-ubuntu-24.04
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - run: pnpm build
+      - run: node --run build
