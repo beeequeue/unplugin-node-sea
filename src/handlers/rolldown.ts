@@ -5,9 +5,9 @@ import { inject } from "postject"
 import { x } from "tinyexec"
 import type { UnpluginOptions } from "unplugin"
 
-import { BLOB_PATH, SEA_CONFIG_PATH, WORK_DIR } from "../constants.js"
-import type { NodeSeaPluginOptions, SeaConfig } from "../types.js"
-import { cleanCacheDir } from "../utils.js"
+import { BLOB_PATH, SEA_CONFIG_PATH, WORK_DIR } from "../constants.ts"
+import type { NodeSeaPluginOptions, SeaConfig } from "../types.ts"
+import { cleanCacheDir } from "../utils.ts"
 
 type Options = NonNullable<UnpluginOptions["rolldown"]>
 
@@ -17,7 +17,6 @@ export const rolldownHandlers = (
 ) =>
   ({
     outputOptions(options) {
-      console.log(this)
       if (options.format !== "commonjs" && options.format !== "cjs") {
         this.error("Node SEA only supports CommonJS. Set `output.format` to `cjs`.")
       }

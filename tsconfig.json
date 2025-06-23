@@ -7,6 +7,7 @@
     "composite": true,
     "isolatedDeclarations": true,
     "tsBuildInfoFile": "node_modules/.cache/typescript/.tsbuildinfo",
+    "allowImportingTsExtensions": true,
 
     // Modules
     "lib": ["es2024"],
@@ -32,6 +33,6 @@
     // Extra types
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "copy.ts"]
+  "include": ["src/", "tests/"],
+  "exclude": ["node_modules", "dist"]
 }

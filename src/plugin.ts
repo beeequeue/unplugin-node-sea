@@ -5,10 +5,10 @@ import { x } from "tinyexec"
 import { which } from "tinywhich"
 import { createUnplugin, type UnpluginInstance } from "unplugin"
 
-import { WORK_DIR } from "./constants.js"
-import { rolldownHandlers } from "./handlers/rolldown.js"
-import type { NodeSeaPluginOptions } from "./types.js"
-import { cleanCacheDir, loadPkgJson } from "./utils.js"
+import { WORK_DIR } from "./constants.ts"
+import { rolldownHandlers } from "./handlers/rolldown.ts"
+import type { NodeSeaPluginOptions } from "./types.ts"
+import { cleanCacheDir, getArchOsExtensionSuffix, loadPkgJson } from "./utils.ts"
 
 export const nodeSeaUnplugin: UnpluginInstance<NodeSeaPluginOptions | undefined, false> =
   createUnplugin((rawOptions = {}) => {
@@ -23,15 +23,8 @@ export const nodeSeaUnplugin: UnpluginInstance<NodeSeaPluginOptions | undefined,
           : pkgJson.name
         : "exec"
 
-    let platform = "unknown"
-    if (process.platform === "win32") platform = "win"
-    if (process.platform === "darwin") platform = "mac"
-    if (process.platform === "linux") platform = "linux"
-    rawOptions.name += `-${process.arch}-${platform}`
+    rawOptions.name += getArchOsExtensionSuffix()
 
-    if (process.platform === "win32") {
-      rawOptions.name += ".exe"
-    }
     const execPath = path.join(WORK_DIR, rawOptions.name)
 
     let nodeExecPromise: Promise<void> | null = null

@@ -2,7 +2,22 @@ import fs from "node:fs"
 
 import * as pkg from "empathic/package"
 
-import { WORK_DIR } from "./constants.js"
+import { WORK_DIR } from "./constants.ts"
+
+export const getArchOsExtensionSuffix = (): string => {
+  let platform = "unknown"
+  if (process.platform === "win32") platform = "win"
+  if (process.platform === "darwin") platform = "mac"
+  if (process.platform === "linux") platform = "linux"
+
+  let suffix = `-${process.arch}-${platform}`
+
+  if (process.platform === "win32") {
+    suffix += ".exe"
+  }
+
+  return suffix
+}
 
 export const cleanCacheDir = (): void => {
   fs.rmSync(WORK_DIR, { recursive: true, force: true })

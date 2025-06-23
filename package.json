@@ -32,7 +32,7 @@
     "dev": "tsdown --watch",
     "build": "tsdown",
     "lint": "eslint",
-    "test": "node --test",
+    "test": "node --experimental-strip-types --test",
     "typecheck": "tsc --noEmit --project tsconfig.json",
     "prepare": "simple-git-hooks"
   },
